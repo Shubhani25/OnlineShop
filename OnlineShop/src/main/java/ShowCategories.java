@@ -39,7 +39,7 @@ public class ShowCategories extends HttpServlet {
 			con.close();
 		}
 		catch(Exception e) {
-			
+			out.println(e);
 		}
 	}
 
