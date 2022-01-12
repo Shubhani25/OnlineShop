@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-public class SaveUser extends HttpServlet {
+public class SaveProduct extends HttpServlet {
 	Connection con;
 	PreparedStatement ps;
 	
@@ -18,7 +18,7 @@ public class SaveUser extends HttpServlet {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shop","root","root");
-			String sql = "Insert into userinfo values(?,?,?,?,?,?)";
+			String sql = "Insert into prodinfo values(?,?,?,?,?)";
 			ps = con.prepareStatement(sql);
 		}
 		catch(Exception e) {
@@ -40,24 +40,25 @@ public class SaveUser extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		try {
-			String s1 = request.getParameter("userid");
-			String s2 = request.getParameter("password");
-			String s3 = request.getParameter("username");
-			String s4 = request.getParameter("address");
-			String s5 = request.getParameter("mobile");
-			String s6 = request.getParameter("email");
+			
+			String s1 = request.getParameter("pcode");
+			String s2 = request.getParameter("ptitle");
+			String s3 = request.getParameter("pdesc");
+			String s4 = request.getParameter("category");
+			String s5 = request.getParameter("price");
+			
 						
 			ps.setString(1, s1);
 			ps.setString(2, s2);
 			ps.setString(3, s3);
 			ps.setString(4, s4);
 			ps.setString(5, s5);
-			ps.setString(6, s6);			
+						
 			ps.executeUpdate();
 			
 			out.println("<html><body>"); 
-			out.println("<h3>Registration Successful</h3>");
-			out.println("<h4><a href = index.jsp>Click to login</a></h4>");
+			out.println("<h3>Product Added Successful</h3>");
+			out.println("<h4><a href = entry.jsp>Click to add more</a></h4>");
 			out.println("</body></html>");
 			
 			

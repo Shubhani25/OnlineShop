@@ -19,4 +19,24 @@
     <servlet-name>SaveUser</servlet-name>
     <url-pattern>/SaveUser</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowCategories</display-name>
+    <servlet-name>ShowCategories</servlet-name>
+    <servlet-class>ShowCategories</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowCategories</servlet-name>
+    <url-pattern>/ShowCategories</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SaveProduct</display-name>
+    <servlet-name>SaveProduct</servlet-name>
+    <servlet-class>SaveProduct</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaveProduct</servlet-name>
+    <url-pattern>/SaveProduct</url-pattern>
+  </servlet-mapping>
 </web-app>
