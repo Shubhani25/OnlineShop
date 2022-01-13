@@ -1,15 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Online Shopping!</title>
-</head>
 <body>
 <h2><center>Online Shopping!</center></h2>
 <hr>
-<form action="">
+<form action="VerifyUser">
 <pre>
 	UserID		<input type="text" name="userid" />
 	Password	<input type="password" name="password"/>

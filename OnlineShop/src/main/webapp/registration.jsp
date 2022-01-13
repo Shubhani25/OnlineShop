@@ -21,7 +21,7 @@
 	Mobile		<input type="text" name="mobile"/>
 	Email		<input type="text" name="email"/>
 	
-		<input type="submit" value="Registration" />
+		<input type="submit" value="Register" />
 </pre>
 </form>
 <hr>

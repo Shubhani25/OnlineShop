@@ -1,4 +1,3 @@
-import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,39 +10,50 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class ShowCategories extends HttpServlet {
+public class ShowItems extends HttpServlet {
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+		String cat = request.getParameter("cat");
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shop","root","root");
-			String sql = "select distinct category from prodinfo order by category";
-			
+			String sql = "select pcode, ptitle from prodinfo where category = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, cat);
 			ResultSet rs = ps.executeQuery();
 			
-			out.println("<html><body>");
-			out.println("<h3>Select the desired category:</h3>");
+			out.println("<html>");
+			out.println("<body>");
+			out.println("<h3>Select Desired Product</h3>");
 			out.println("<hr>");
 			while(rs.next()) {
-				String s = rs.getString(1);
-				out.println("<a href=ShowItems?cat="+s+">");
-				out.println(s);
+				String s1 = rs.getString(1);
+				String s2 = rs.getString(2);
+				out.println("<a href = ShowDetails?pid="+s1+">");
+				out.println(s2);
 				out.println("</a>");
 				out.println("<br>");
 			}
-			out.println("</body></html>");
+			out.println("<hr>");
+			
+			out.println("<a href=ShowCategories>Categories</a>");
+			out.println("<br>");
+			out.println("<a href=buyerhome.jsp>Customer Home</a>");
+			out.println("<br>");
+			out.println("</body>");
+			out.println("</html>");
 			
 			con.close();
 		}
 		catch(Exception e) {
-			out.println(e);
+			
 		}
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

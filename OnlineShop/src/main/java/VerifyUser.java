@@ -8,17 +8,19 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
-public class SaveUser extends HttpServlet {
+public class VerifyUser extends HttpServlet {
 	Connection con;
 	PreparedStatement ps;
+	ResultSet rs;
 	
 	@Override
 	public void init() throws ServletException {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shop","root","root");
-			String sql = "Insert into userinfo values(?,?,?,?,?,?)";
+			String sql = "Select username from userinfo where userid=? and password=?";
 			ps = con.prepareStatement(sql);
 		}
 		catch(Exception e) {
@@ -42,26 +44,38 @@ public class SaveUser extends HttpServlet {
 		
 		String s1 = request.getParameter("userid");
 		String s2 = request.getParameter("password");
-		String s3 = request.getParameter("username");
-		String s4 = request.getParameter("address");
-		String s5 = request.getParameter("mobile");
-		String s6 = request.getParameter("email");
-		
+		String s3 = request.getParameter("usertype");
+				
 		try {				
-			ps.setString(1, s1);
-			ps.setString(2, s2);
-			ps.setString(3, s3);
-			ps.setString(4, s4);
-			ps.setString(5, s5);
-			ps.setString(6, s6);			
-			ps.executeUpdate();
-			
-			out.println("<html><body>"); 
-			out.println("<h3>Registration Successful</h3>");
-			out.println("<h4><a href = index.jsp>Click to login</a></h4>");
-			out.println("</body></html>");
-			
-			
+			if(s3.equals("Admin")) {
+				if(s1.equals("Admin") && s2.equals("admin")) {
+					out.println("Welcome Admin!");
+				}
+				else {
+					out.println("Invalid Admin Credentials!");
+				}
+			}
+			else {
+				try {
+					ps.setString(1, s1);
+					ps.setString(2, s2);
+					
+					rs = ps.executeQuery();
+					
+					boolean found = rs.next();
+					
+					if(found) {
+						out.println("Welcome Customer!");
+					}
+					else {
+						out.println("Invalid Customer Credentials.");
+					}
+				}
+				catch(Exception e) {
+					out.println(e);
+				}
+				
+			}
 		}
 		catch(Exception e) {
 			out.println(e);
