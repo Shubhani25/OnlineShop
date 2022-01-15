@@ -1,6 +1,6 @@
 <html>
 <body>
-<h2><center>Online Shopping!</center></h2>
+<h2>Online Shopping!</h2>
 <hr>
 <form action="VerifyUser">
 <pre>
