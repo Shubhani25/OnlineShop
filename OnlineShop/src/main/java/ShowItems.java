@@ -1,4 +1,5 @@
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,6 +16,10 @@ public class ShowItems extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		String cat = request.getParameter("cat");
+		
+		Cookie ck = new Cookie("choice", cat);
+		ck.setMaxAge(60*60*24*3);
+		response.addCookie(ck);
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

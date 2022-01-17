@@ -69,4 +69,14 @@
     <servlet-name>ShowDetails</servlet-name>
     <url-pattern>/ShowDetails</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CartManager</display-name>
+    <servlet-name>CartManager</servlet-name>
+    <servlet-class>CartManager</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartManager</servlet-name>
+    <url-pattern>/CartManager</url-pattern>
+  </servlet-mapping>
 </web-app>
