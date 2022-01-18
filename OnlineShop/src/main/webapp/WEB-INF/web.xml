@@ -79,4 +79,24 @@
     <servlet-name>CartManager</servlet-name>
     <url-pattern>/CartManager</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DisplayCart</display-name>
+    <servlet-name>DisplayCart</servlet-name>
+    <servlet-class>DisplayCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DisplayCart</servlet-name>
+    <url-pattern>/DisplayCart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RemoveItem</display-name>
+    <servlet-name>RemoveItem</servlet-name>
+    <servlet-class>RemoveItem</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveItem</servlet-name>
+    <url-pattern>/RemoveItem</url-pattern>
+  </servlet-mapping>
 </web-app>

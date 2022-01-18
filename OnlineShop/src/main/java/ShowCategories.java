@@ -12,11 +12,19 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class ShowCategories extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+		
 		HttpSession session = request.getSession();
+		ArrayList list = (ArrayList)session.getAttribute("cart");
+		int no =0;
+		if(list!=null) {
+			no=list.size();
+		}
+		
 		String name = (String) session.getAttribute("username");
 		
 		if(name == null){
@@ -33,6 +41,7 @@ public class ShowCategories extends HttpServlet {
 			
 			out.println("<html><body>");
 			out.println("<h2>Welcome"+name+"</h2>");
+			out.println("<h3>Total items in cart "+no+"</h3>");
 			out.println("<h3>Select the desired category:</h3>");
 			out.println("<hr>");
 			while(rs.next()) {
