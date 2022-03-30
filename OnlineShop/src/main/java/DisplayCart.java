@@ -38,7 +38,7 @@ public class DisplayCart extends HttpServlet {
 				Statement smt = con.createStatement();
 				ResultSet rs = smt.executeQuery(sql);
 				
-				out.println("<table>");
+				out.println("<table border =1>");
 				out.println("<tr>");
 				out.println("<td>Pcode</td>");
 				out.println("<td>Title</td>");

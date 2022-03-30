@@ -49,8 +49,8 @@ public class VerifyUser extends HttpServlet {
         String s2=request.getParameter("password");
         String s3=request.getParameter("usertype");
         
-        if(s3.equals("admin")){
-            if(s1.equals("admin") && s2.equals("admin")){
+        if(s3.equals("Admin")){
+            if(s1.equals("Admin") && s2.equals("admin")){
                 //out.println("WELCOME ADMIN");
                 response.sendRedirect("adminhome.jsp");
             }

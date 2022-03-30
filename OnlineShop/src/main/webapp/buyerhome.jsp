@@ -35,6 +35,7 @@ for(Cookie c:ck){
 	<hr>
 	<pre>
 	<a href = "ShowCategories">Explore Store</a>
+	<a href="ProductList.jsp">View All Products</a>
 	<a href = "">Search Product</a>
 	<a href = "DisplayCart">View Cart</a>
 	<a href = "">Logout</a>
